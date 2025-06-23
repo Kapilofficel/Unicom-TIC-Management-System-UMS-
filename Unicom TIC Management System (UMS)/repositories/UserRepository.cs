@@ -10,7 +10,7 @@ namespace Unicom_TIC_Management_System__UMS_.Models
 
         public _UserRepository()
         {
-            string dbPath = Path.Combine(System.Windows.Forms.Application.StartupPath, "ssss.db");
+            string dbPath = Path.Combine(System.Windows.Forms.Application.StartupPath, "unicomtic.db");
             connectionString = $"Data Source={dbPath};Version=3;";
         }
 
@@ -25,7 +25,7 @@ namespace Unicom_TIC_Management_System__UMS_.Models
                 using (var cmd = new SQLiteCommand(checkQuery, conn))
                 {
                     cmd.Parameters.AddWithValue("@Username", username);
-                    long count = (long)cmd.ExecuteScalar();
+                    var count = (long)cmd.ExecuteScalar();
                     if (count > 0) return false; // Already exists
                 }
 
